@@ -1,0 +1,13 @@
+.page {
+    /* margin: 1em; */
+    font-size: 1em;
+    /* background: #fff; */
+}
+
+.header {
+    background-color: #a51c31;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
