@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../barang.module.css';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export default function ViewBarangPage() {
     // const nama = "TEKNOKRAT";
@@ -12,9 +12,15 @@ export default function ViewBarangPage() {
 
     return (
         <main className={styles.page}>
-            <header className={styles.header}>
-                <Image src={"/images/logo.png"} alt="Logo UTI" width={320} height={60} />
-            </header>
+            
+            <main className={styles.content}>
+                Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam
+                Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam
+                Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam
+            </main>
+            <footer className={styles.footer}>
+                &copy; 2025 - IF 23 Fx
+            </footer>
         </main>
     )
 }
