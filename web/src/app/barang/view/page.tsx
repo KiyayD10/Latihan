@@ -13,15 +13,13 @@ export default function ViewBarangPage() {
     return (
         <section className={styles.page}>
             {/* tombol / nvigasi */}
-            <nav className='mb-4 flex sm:justify-end justify-center'>
-                <button className='bg-cyan-600 px-8 py-2 text-white rounded-full'>Tambah Data</button>
+            <nav className='mb-4 flex sm:justify-end md:justify-start justify-center'>
+                <button className='sm:bg-cyan-600 bg-rose-700 px-8 py-2 text-white rounded-full'>Tambah Data</button>
             </nav>
             
             {/* tabel barang */}
             <article>
-                Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam
-                Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam
-                Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam
+                
             </article>
 
         </section>
