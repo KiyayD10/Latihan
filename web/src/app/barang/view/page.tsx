@@ -11,16 +11,19 @@ export default function ViewBarangPage() {
     // )
 
     return (
-        <main className={styles.page}>
+        <section className={styles.page}>
+            {/* tombol / nvigasi */}
+            <nav className='mb-4 flex sm:justify-end justify-center'>
+                <button className='bg-cyan-600 px-8 py-2 text-white rounded-full'>Tambah Data</button>
+            </nav>
             
-            <main className={styles.content}>
+            {/* tabel barang */}
+            <article>
                 Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam
                 Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam
                 Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam Selamat Malam
-            </main>
-            <footer className={styles.footer}>
-                &copy; 2025 - IF 23 Fx
-            </footer>
-        </main>
+            </article>
+
+        </section>
     )
 }

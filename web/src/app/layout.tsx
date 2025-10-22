@@ -30,9 +30,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header className={styles.header}>
-            <Image src={"/images/logo.png"} alt="Logo UTI" width={320} height={60} priority />
+          <Image src={"/images/logo.png"} alt="Logo UTI" width={320} height={60} priority />
         </header>
-        {children}
+        <main>{children}</main>
+        <footer className={styles.footer}>
+          &copy; 2025 - IF 23 Fx
+        </footer>
       </body>
     </html>
   );
