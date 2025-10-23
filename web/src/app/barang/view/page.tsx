@@ -1,6 +1,12 @@
+"use client";
+
 import React from 'react';
 import styles from '../barang.module.css';
+import useSWR from 'swr';
 // import Image from 'next/image';
+
+// buat variable fetcher
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function ViewBarangPage() {
     // const nama = "TEKNOKRAT";
@@ -9,6 +15,12 @@ export default function ViewBarangPage() {
     // return (
     //     <p>View Barang {`${nama} ${motto}`} TERBAIK ASEAN</p>
     // )
+
+    // definisi SWR
+    const { data, error, isLoading } = useSWR(
+        "https://localhost:3001/api/barang",
+        fetcher
+    );
 
     return (
         <section className={styles.page}>
