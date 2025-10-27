@@ -1,9 +1,30 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native'
-import React from 'react'
-import { FAB } from 'react-native-paper'
+import { View, Text, StyleSheet } from 'react-native'
+import React, { useEffect } from 'react'
+import { FAB, TextInput } from 'react-native-paper'
 import { Colors } from '@/constants/color'
+import Feather from "react-native-vector-icons/Feather";
+import axios from 'axios'
 
 export default function BarangViewPage() {
+
+    // react hook (useEffect)
+    useEffect(() => {
+        // panggil fungsi getData
+        getData();
+    })
+
+    // buat fungsi untuk ambil data barang (GET)
+    const getData = async () => {
+        await axios.get('https://jsonplaceholder.typicode.com/posts')
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+        // return response;
+    }
+
     return (
         <View style={styles.frame}>
             <Text style={styles.title}>Tampil Data Barang</Text>
@@ -13,9 +34,14 @@ export default function BarangViewPage() {
                 {/* komponen search */}
                 <View style={{ width: "100%" }}>
                     <TextInput
-                        label="Password"
+                        label="Cari Data Barang"
                         // secureTextEntry
-                        right={<TextInput.Icon icon="search" />}
+                        right={
+                            <TextInput.Icon 
+                                icon={() => <Feather name="search" size={20} color="gray" onPress={() => console.log('Pressed')} />} 
+                            />
+                        }
+                        style={{ backgroundColor: Colors.white }}
                     />
                 </View>
 
@@ -46,7 +72,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "flex-start",
         alignItems: "center",
-        // backgroundColor: "red",
+        backgroundColor: Colors.white,
         // height: 500,
     },
     fab: {
