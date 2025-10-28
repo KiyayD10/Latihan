@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FAB, TextInput } from 'react-native-paper'
 import { Colors } from '@/constants/color'
-import Feather from "react-native-vector-icons/Feather";
+import { Feather } from "@expo/vector-icons";
 import axios from 'axios'
 
 export default function BarangViewPage() {
@@ -11,13 +11,17 @@ export default function BarangViewPage() {
     useEffect(() => {
         // panggil fungsi getData
         getData();
-    })
+    });
+
+    // react hook (useState)
+    const [data, setData] = useState<{id: number; kode: string; nama: string; harga: number; satuan: string} []>([]);
 
     // buat fungsi untuk ambil data barang (GET)
     const getData = async () => {
-        await axios.get('https://jsonplaceholder.typicode.com/posts')
+        await axios.get('http://10.35.115.72:3001/api/barang')
         .then(function (response) {
-            console.log(response);
+            // console.log(response.data.barang);
+            setData(response.data.barang);
         })
         .catch(function (error) {
             console.log(error);
@@ -46,6 +50,11 @@ export default function BarangViewPage() {
                 </View>
 
                 {/* komponen card */}
+                <Text>
+                    {data.map((item, index) => (
+                        <Text key={index.id}>{item.harga}></Text>
+                    ))}
+                </Text>
 
                 {/* komponen FAB */}
             <FAB
