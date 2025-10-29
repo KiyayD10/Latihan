@@ -3,7 +3,17 @@
 import React from 'react';
 import styles from '../barang.module.css';
 import useSWR from 'swr';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 // import Image from 'next/image';
+
+// buat interface untuk data barang
+interface ModelBarang {
+    id: number;
+    kode: string;
+    nama: string;
+    harga: number;
+    satuan: string;
+}
 
 // buat variable fetcher
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -18,7 +28,7 @@ export default function ViewBarangPage() {
 
     // definisi SWR
     const { data, error, isLoading } = useSWR(
-        "https://localhost:3001/api/barang",
+        "http://localhost:3001/api/barang",
         fetcher
     );
 
@@ -31,9 +41,52 @@ export default function ViewBarangPage() {
             
             {/* tabel barang */}
             <article>
-                
-            </article>
+                {/* <table>
+                    <tr>
+                        <th>Aksi</th>
+                        <th>Kode</th>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>Satuan</th>
+                    </tr>
+                 */}
 
+            <Table>
+                <TableCaption>A list of your recent invoices.</TableCaption>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="w-[100px]">Invoice</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Method</TableHead>
+                        <TableHead className="text-right">Amount</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                {data && (
+                    data.barang.map((item: ModelBarang) => (
+                        // <div key={item.id}>
+                        //     <p>{item.nama}</p>
+                        // </div>
+                        // <tr key={item.id}>
+                        //     <td>-</td>
+                        //     <td>{item.kode}</td>
+                        //     <td>{item.nama}</td>
+                        //     <td>{item.harga}</td>
+                        //     <td>{item.satuan}</td>
+                        // </tr>
+                        <TableRow key={item.id}>
+                            <TableCell className="font-medium">INV001</TableCell>
+                            <TableCell>Paid</TableCell>
+                            <TableCell>Credit Card</TableCell>
+                            <TableCell className="text-right">$250.00</TableCell>
+                        </TableRow>
+                    ))
+                )}
+                </TableBody>
+            </Table>
+
+                {/* </table> */}
+            </article>
         </section>
     )
 }

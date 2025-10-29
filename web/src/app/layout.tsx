@@ -1,7 +1,7 @@
 import styles from './barang/barang.module.css';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+// import "./globals.css";
 import Image from "next/image";
 
 const geistSans = Geist({
