@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from '../barang.module.css';
 import useSWR from 'swr';
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 // import Image from 'next/image';
 
 // buat interface untuk data barang
@@ -32,6 +32,16 @@ export default function ViewBarangPage() {
         fetcher
     );
 
+    // jika terjadi error (pengambilan data API)
+    // if (error) {
+    //     return <div>gagal mengambil data</div>;
+    // }
+
+    // // jika sedang loading
+    // if (isLoading) {
+    //     return <div>Mohon Tunggu...</div>;
+    // }
+
     return (
         <section className={styles.page}>
             {/* tombol / nvigasi */}
@@ -51,18 +61,25 @@ export default function ViewBarangPage() {
                     </tr>
                  */}
 
+            { error ? <div>gagal mengambil data</div> : 
             <Table>
-                <TableCaption>A list of your recent invoices.</TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead className="w-[100px]">Invoice</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Method</TableHead>
-                        <TableHead className="text-right">Amount</TableHead>
+                        <TableHead className="w-[100px]">Aksi</TableHead>
+                        <TableHead>Kode</TableHead>
+                        <TableHead>Nama</TableHead>
+                        <TableHead className="text-right">Harga</TableHead>
+                        <TableHead>Satuan</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                {data && (
+                
+                {isLoading ? 
+                    <TableRow>
+                        <TableCell colSpan={5} className='text-center'>Mohon  Tunggu..!</TableCell>
+                    </TableRow>
+                :
+                data && (
                     data.barang.map((item: ModelBarang) => (
                         // <div key={item.id}>
                         //     <p>{item.nama}</p>
@@ -75,15 +92,17 @@ export default function ViewBarangPage() {
                         //     <td>{item.satuan}</td>
                         // </tr>
                         <TableRow key={item.id}>
-                            <TableCell className="font-medium">INV001</TableCell>
-                            <TableCell>Paid</TableCell>
-                            <TableCell>Credit Card</TableCell>
-                            <TableCell className="text-right">$250.00</TableCell>
+                            <TableCell className="font-medium">-</TableCell>
+                            <TableCell>{item.kode}</TableCell>
+                            <TableCell>{item.nama}</TableCell>
+                            <TableCell className="text-right">{item.harga}</TableCell>
+                            <TableCell>{item.satuan}</TableCell>
                         </TableRow>
                     ))
                 )}
                 </TableBody>
             </Table>
+            }    
 
                 {/* </table> */}
             </article>
